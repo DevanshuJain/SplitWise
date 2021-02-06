@@ -1,0 +1,33 @@
+<h1><%= "#{@group.Group_name} " %>  / Expenses</h1>
+
+<%= link_to "New Expense", new_group_expanse_path %>
+<%= link_to "Add Firend", add_firend_in_group_path(@group.id) %>
+
+<table class="table">
+    <thead>
+      <tr>
+       <th>Group_name</th>
+       <th></th>
+       <th></th>
+       <th>Edit</th>
+       <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @expanse.each do |expanse| %>
+        <tr>
+          <td><%= expanse.title %></td>
+          <td><%= expanse.description %></td>
+          <td><%= expanse.amount %></td>
+          <td ><%= link_to 'Edit', edit_group_expanse_path(@group.id, expanse.id) %></td>
+          <td ><%= link_to "Destroy", group_expanse_path(@group.id, expanse.id),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+
+
